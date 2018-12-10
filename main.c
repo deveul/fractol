@@ -6,7 +6,7 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 13:20:10 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/10 11:38:14 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/10 14:01:18 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static void	ft_init_fractol(t_fractol *f)
 	f->increaseiter = 0;
 	f->decreaseiter = 0;
 	f->color = 0;
+	f->change = 0;
 }
 
 int			main(int argc, char **argv)
@@ -52,6 +53,7 @@ int			main(int argc, char **argv)
 		ft_mandelbrot(&f);
 	else if (ft_strequ(argv[1], "Julia"))
 		ft_julia(&f);
+	mlx_put_image_to_window(f.mlxptr, f.mlxwin, f.mlxima, 0, 0);
 	mlx_hook(f.mlxwin, 2, 0, ft_key_down, &f);
 	mlx_hook(f.mlxwin, 3, 0, ft_key_up, &f);
 	mlx_loop_hook(f.mlxptr, ft_loop, &f);

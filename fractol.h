@@ -6,7 +6,7 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 13:23:18 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/10 11:38:16 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/10 13:54:31 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct		s_fractol
 	void			*mlxwin;
 	void			*mlxima;
 	char			*strima;
+	int				change;
 	int				max_iter;
 	int				x1;
 	int				x2;
