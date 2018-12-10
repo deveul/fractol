@@ -6,7 +6,7 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 15:55:35 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/10 19:55:43 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/10 20:13:57 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ static int		ft_reset(t_fractol *f)
 	f->max_iter = 100;
 	f->start_y = 0;
 	f->start_x = -0.75;
+	return (0);
+}
+
+static int		ft_reset_color(t_fractol *f)
+{
 	f->r = 10;
 	f->b = 1;
 	f->g = 5;
@@ -79,7 +84,7 @@ int				ft_commands(int keycode, t_fractol *f)
 			|| keycode == 17 || keycode == 3 || keycode == 9
 			|| keycode == 29 || keycode == 24 || keycode == 27
 			|| ((keycode == 69 || keycode == 67) && f->max_iter < 10000)
-			|| (keycode == 78 && f->max_iter > 15)
+			|| keycode == 257 || (keycode == 78 && f->max_iter > 15)
 			|| (keycode == 75 && f->max_iter > 65))
 		f->change = 1;
 	if (keycode == 53)
@@ -89,6 +94,8 @@ int				ft_commands(int keycode, t_fractol *f)
 		ft_switch_color(keycode, f);
 	else if (keycode == 29)
 		ft_reset(f);
+	else if (keycode == 257)
+		ft_reset_color(f);
 	else if (((keycode == 69 || keycode == 67) && f->max_iter < 10000)
 			|| (keycode == 75 && f->max_iter > 65)
 			|| (keycode == 78 && f->max_iter > 15))
