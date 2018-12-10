@@ -6,7 +6,7 @@
 #    By: vrenaudi <urenaudi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 14:25:25 by vrenaudi          #+#    #+#              #
-#    Updated: 2018/12/07 11:19:27 by vrenaudi         ###   ########.fr        #
+#    Updated: 2018/12/10 10:34:59 by vrenaudi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,6 @@ NAME = fractol
 SRCS = main.c \
 	   ft_mandelbrot.c \
 	   ft_julia.c \
-	   ft_expose_loop.c \
 	   ft_loop.c \
 	   ft_key.c \
 	   ft_commands.c \

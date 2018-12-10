@@ -6,7 +6,7 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 13:23:18 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/07 16:06:34 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/10 11:38:16 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include <mlx.h>
 # include <math.h>
 
-# define WIDTH 1280
-# define HEIGHT 720
+# define WIDTH 900
+# define HEIGHT 900
 
 typedef struct		s_fractol
 {
@@ -57,7 +57,6 @@ typedef struct		s_mand
 
 void				ft_mandelbrot(t_fractol *f);
 void				ft_julia(t_fractol *f);
-int					ft_expose_loop(t_fractol *f);
 int					ft_loop(t_fractol *f);
 int					ft_key_down(int keycode, t_fractol *f);
 int					ft_key_up(int keycode, t_fractol *f);

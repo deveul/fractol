@@ -6,7 +6,7 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 15:55:39 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/07 16:06:36 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/10 11:29:16 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,6 @@ static void	ft_draw_pixel(t_fractol *f, int x, int y, int i)
 
 	pos = (4 * x) + (y * WIDTH * 4);
 	f->strima[pos + f->color] = (char)(255 * i / f->max_iter);
-}
-
-static void	ft_init_mandelbrot(t_mand *m)
-{
-	m->y = -1;
-	m->zr = 0;
-	m->zi = 0;
 }
 
 static void	ft_init_while(t_mand *m, double *tmp, int *i)
@@ -41,7 +34,7 @@ void		ft_mandelbrot(t_fractol *f)
 	int		i;
 	double	tmp;
 
-	ft_init_mandelbrot(&m);
+	m.y = -1;
 	while (++m.y < HEIGHT)
 	{
 		m.ci = 1.5 * (m.y - HEIGHT / 2) / (0.5 * f->z * HEIGHT) + f->start_y;
