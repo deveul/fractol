@@ -6,18 +6,17 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 15:55:39 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/10 11:29:16 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/10 20:01:28 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static void	ft_draw_pixel(t_fractol *f, int x, int y, int i)
+static void	ft_draw_pixel(t_fractol *f, int i)
 {
-	int		pos;
-
-	pos = (4 * x) + (y * WIDTH * 4);
-	f->strima[pos + f->color] = (char)(255 * i / f->max_iter);
+	f->strima[f->pos] = (char)((f->b * i) % 256);
+	f->strima[f->pos + 1] = (char)((f->g * i) % 256);
+	f->strima[f->pos + 2] = (char)((f->r * i) % 256);
 }
 
 static void	ft_init_while(t_mand *m, double *tmp, int *i)
@@ -35,6 +34,8 @@ void		ft_mandelbrot(t_fractol *f)
 	double	tmp;
 
 	m.y = -1;
+	printf("start x : %f\n", f->start_x);
+	printf("start y : %f\n", f->start_y);
 	while (++m.y < HEIGHT)
 	{
 		m.ci = 1.5 * (m.y - HEIGHT / 2) / (0.5 * f->z * HEIGHT) + f->start_y;
@@ -50,7 +51,8 @@ void		ft_mandelbrot(t_fractol *f)
 				m.zi = 2 * tmp * m.zi + m.ci;
 			}
 			if (i < f->max_iter)
-				ft_draw_pixel(f, m.x, m.y, i);
+				ft_draw_pixel(f, i);
+			f->pos += 4;
 		}
 	}
 }

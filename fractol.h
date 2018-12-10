@@ -6,7 +6,7 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 13:23:18 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/10 13:54:31 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/10 19:33:12 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct		s_fractol
 	char			*strima;
 	int				change;
 	int				max_iter;
+	int				pos;
 	int				x1;
 	int				x2;
 	int				y1;
@@ -39,11 +40,10 @@ typedef struct		s_fractol
 	int				move_r;
 	int				move_d;
 	int				move_u;
-	int				increaseiter;
-	int				decreaseiter;
 	int				color;
-	int				zoom_in;
-	int				zoom_out;
+	int				r;
+	int				g;
+	int				b;
 }					t_fractol;
 
 typedef struct		s_mand
@@ -62,5 +62,6 @@ int					ft_loop(t_fractol *f);
 int					ft_key_down(int keycode, t_fractol *f);
 int					ft_key_up(int keycode, t_fractol *f);
 int					ft_commands(int keycode, t_fractol *f);
+int					ft_mouse(int button, int x, int y, t_fractol *f);
 
 #endif
