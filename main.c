@@ -6,7 +6,7 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 13:20:10 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/10 19:57:53 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/11 16:05:57 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ static void	ft_init_fractol(t_fractol *f)
 	f->mlxima = NULL;
 	f->strima = NULL;
 	f->z = 1;
-	f->start_x = -0.75;
-	f->start_y = 0.0;
+	f->xmin = -2.8;
+	f->xmax = 2.;
+	f->ymin = -1.5;
+	f->ymax = 1.5;
 	f->move_l = 0;
 	f->move_r = 0;
 	f->move_d = 0;
@@ -32,6 +34,8 @@ static void	ft_init_fractol(t_fractol *f)
 	f->r = 10;
 	f->b = 1;
 	f->g = 5;
+	f->ms = 50;
+	f->zoom = 1.1;
 }
 
 int			main(int argc, char **argv)
@@ -57,9 +61,15 @@ int			main(int argc, char **argv)
 	f.mlxima = mlx_new_image(f.mlxptr, WIDTH, HEIGHT);
 	f.strima = mlx_get_data_addr(f.mlxima, &(bpp), &(s_l), &(endian));
 	if (ft_strequ(argv[1], "Mandelbrot"))
+	{
+		f.param = 0;
 		ft_mandelbrot(&f);
+	}
 	else if (ft_strequ(argv[1], "Julia"))
+	{
+		f.param = 1;
 		ft_julia(&f);
+	}
 	mlx_put_image_to_window(f.mlxptr, f.mlxwin, f.mlxima, 0, 0);
 	mlx_hook(f.mlxwin, 2, 0, ft_key_down, &f);
 	mlx_hook(f.mlxwin, 3, 0, ft_key_up, &f);

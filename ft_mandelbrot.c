@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mandelbrot.c                                    :+:      :+:    :+:   */
+/*   ft_julia.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 15:55:39 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/10 20:01:28 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/11 16:03:41 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,19 @@ static void	ft_init_while(t_mand *m, double *tmp, int *i)
 void		ft_mandelbrot(t_fractol *f)
 {
 	t_mand	m;
+	int		x;
+	int		y;
 	int		i;
 	double	tmp;
 
-	m.y = -1;
-	printf("start x : %f\n", f->start_x);
-	printf("start y : %f\n", f->start_y);
-	while (++m.y < HEIGHT)
+	y = -1;
+	while (++y < HEIGHT)
 	{
-		m.ci = 1.5 * (m.y - HEIGHT / 2) / (0.5 * f->z * HEIGHT) + f->start_y;
-		m.x = -1;
-		while (++m.x < WIDTH)
+		m.ci = f->ymin + (((f->ymax - f->ymin) / HEIGHT) * y);
+		x = -1;
+		while (++x < WIDTH)
 		{
-			m.cr = 1.5 * (m.x - WIDTH / 2) / (0.5 * f->z * WIDTH) + f->start_x;
+			m.cr = f->xmin + (((f->xmax - f->xmin) / WIDTH) * x);
 			ft_init_while(&m, &tmp, &i);
 			while (((m.zr * m.zr) + (m.zi * m.zi)) < 4 && i++ < f->max_iter)
 			{

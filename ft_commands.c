@@ -6,7 +6,7 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 15:55:35 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/10 20:13:57 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/11 16:05:50 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,13 @@ static int		ft_quit(t_fractol *f)
 
 static int		ft_reset(t_fractol *f)
 {
+	f->xmin = -2.4;
+	f->xmax = 2.4;
+	f->ymin = -1.5;
+	f->ymax = 1.5;
 	f->z = 0.8;
+	f->ms = 10;
 	f->max_iter = 100;
-	f->start_y = 0;
-	f->start_x = -0.75;
 	return (0);
 }
 
@@ -71,10 +74,31 @@ static int		ft_change_max_iter(int keycode, t_fractol *f)
 static int		ft_z_in_and_out(int keycode, t_fractol *f)
 {
 	if (keycode == 24)
-		f->z *= 1.5;
+	{
+		f->xmin /= f->zoom;
+		f->xmax /= f->zoom;
+		f->ymin /= f->zoom;
+		f->ymax /= f->zoom;
+		f->z *= 1.1;
+	}
 	if (keycode == 27)
-		f->z /= 1.5;
+	{
+		f->xmin *= f->zoom;
+		f->xmax *= f->zoom;
+		f->ymin *= f->zoom;
+		f->ymax *= f->zoom;
+		f->z /= 1.1;
+	}
 	printf("zoom is : %f\n", f->z);
+	return (0);
+}
+
+static int		ft_change_move_speed(int keycode, t_fractol *f)
+{
+	if (keycode == 13 && f->ms > 5)
+		f->ms -= 5;
+	else
+		f->ms += 5;
 	return (0);
 }
 
@@ -83,6 +107,7 @@ int				ft_commands(int keycode, t_fractol *f)
 	if (keycode == 53 || keycode == 5 || keycode == 11 || keycode == 15
 			|| keycode == 17 || keycode == 3 || keycode == 9
 			|| keycode == 29 || keycode == 24 || keycode == 27
+			|| keycode == 13 || keycode == 14
 			|| ((keycode == 69 || keycode == 67) && f->max_iter < 10000)
 			|| keycode == 257 || (keycode == 78 && f->max_iter > 15)
 			|| (keycode == 75 && f->max_iter > 65))
@@ -102,6 +127,8 @@ int				ft_commands(int keycode, t_fractol *f)
 		ft_change_max_iter(keycode, f);
 	else if (keycode == 24 || keycode == 27)
 		ft_z_in_and_out(keycode, f);
+	else if (keycode == 13 || keycode == 14)
+		ft_change_move_speed(keycode, f);
 	ft_printf("%d\n", keycode);
 	return (0);
 }

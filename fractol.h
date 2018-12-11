@@ -6,7 +6,7 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 13:23:18 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/10 19:33:12 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/11 16:07:14 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include <mlx.h>
 # include <math.h>
 
-# define WIDTH 900
-# define HEIGHT 900
+# define WIDTH 1080
+# define HEIGHT 720
 
 typedef struct		s_fractol
 {
@@ -29,12 +29,10 @@ typedef struct		s_fractol
 	int				change;
 	int				max_iter;
 	int				pos;
-	int				x1;
-	int				x2;
-	int				y1;
-	int				y2;
-	double			start_x;
-	double			start_y;
+	double			xmin;
+	double			xmax;
+	double			ymin;
+	double			ymax;
 	double			z;
 	int				move_l;
 	int				move_r;
@@ -44,6 +42,9 @@ typedef struct		s_fractol
 	int				r;
 	int				g;
 	int				b;
+	int				param;
+	int				ms;
+	double			zoom;
 }					t_fractol;
 
 typedef struct		s_mand
