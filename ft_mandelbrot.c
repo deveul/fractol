@@ -6,7 +6,7 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 15:55:39 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/11 16:03:41 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/12 13:35:06 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,36 +19,39 @@ static void	ft_draw_pixel(t_fractol *f, int i)
 	f->strima[f->pos + 2] = (char)((f->r * i) % 256);
 }
 
-static void	ft_init_while(t_mand *m, double *tmp, int *i)
+static void	ft_init_while(t_fractol *f, double *tmp, int *i)
 {
 	*(i) = 0;
-	m->zr = 0;
-	m->zi = 0;
+	f->zr = 0;
+	f->zi = 0;
 	*(tmp) = 0;
 }
 
 void		ft_mandelbrot(t_fractol *f)
 {
-	t_mand	m;
 	int		x;
 	int		y;
 	int		i;
 	double	tmp;
+	double	refactor;
+	double	imfactor;
 
 	y = -1;
+	refactor = (f->xmax - f->xmin) / WIDTH;
+	imfactor = (f->ymax - f->ymin) / HEIGHT;
 	while (++y < HEIGHT)
 	{
-		m.ci = f->ymin + (((f->ymax - f->ymin) / HEIGHT) * y);
+		f->ci = f->ymin + y * imfactor;
 		x = -1;
 		while (++x < WIDTH)
 		{
-			m.cr = f->xmin + (((f->xmax - f->xmin) / WIDTH) * x);
-			ft_init_while(&m, &tmp, &i);
-			while (((m.zr * m.zr) + (m.zi * m.zi)) < 4 && i++ < f->max_iter)
+			f->cr = f->xmin + x * refactor;
+			ft_init_while(f, &tmp, &i);
+			while (((f->zr * f->zr) + (f->zi * f->zi)) < 4 && i++ < f->max_iter)
 			{
-				tmp = m.zr;
-				m.zr = m.zr * m.zr - m.zi * m.zi + m.cr;
-				m.zi = 2 * tmp * m.zi + m.ci;
+				tmp = f->zr;
+				f->zr = f->zr * f->zr - f->zi * f->zi + f->cr;
+				f->zi = 2 * tmp * f->zi + f->ci;
 			}
 			if (i < f->max_iter)
 				ft_draw_pixel(f, i);

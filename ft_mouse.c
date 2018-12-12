@@ -6,7 +6,7 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 14:49:01 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/11 15:40:01 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/11 16:07:59 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int		ft_mouse(int button, int x, int y, t_fractol *f)
 		f->ymin = i + ((f->ymin - i) * interpolation);
 		f->xmax = r + ((f->xmax - r) * interpolation);
 		f->ymax = i + ((f->ymax - i) * interpolation);
-		f->z /= 1.1;
 	}
 	if (button == 5)
 	{
@@ -37,7 +36,6 @@ int		ft_mouse(int button, int x, int y, t_fractol *f)
 		f->ymin = i + ((f->ymin - i) / interpolation);
 		f->xmax = r + ((f->xmax - r) / interpolation);
 		f->ymax = i + ((f->ymax - i) / interpolation);
-		f->z *= 1.1;
 	}
 	ft_printf("button : %d\n", button);
 	return (0);

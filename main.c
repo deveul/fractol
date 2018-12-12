@@ -6,7 +6,7 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 13:20:10 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/11 16:05:57 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/12 13:47:27 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,15 @@ static void	ft_init_fractol(t_fractol *f)
 	f->mlxwin = NULL;
 	f->mlxima = NULL;
 	f->strima = NULL;
-	f->z = 1;
 	f->xmin = -2.8;
 	f->xmax = 2.;
 	f->ymin = -1.5;
-	f->ymax = 1.5;
+	f->ymax = f->ymin + (f->xmax - f->xmin) * HEIGHT / WIDTH;
 	f->move_l = 0;
 	f->move_r = 0;
 	f->move_d = 0;
 	f->move_u = 0;
 	f->max_iter = 100;
-	f->color = 1;
 	f->change = 0;
 	f->pos = 0;
 	f->r = 10;

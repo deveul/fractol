@@ -6,7 +6,7 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 15:55:35 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/11 16:05:50 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/11 16:18:31 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ static int		ft_reset(t_fractol *f)
 	f->xmax = 2.4;
 	f->ymin = -1.5;
 	f->ymax = 1.5;
-	f->z = 0.8;
 	f->ms = 10;
 	f->max_iter = 100;
 	return (0);
@@ -79,7 +78,6 @@ static int		ft_z_in_and_out(int keycode, t_fractol *f)
 		f->xmax /= f->zoom;
 		f->ymin /= f->zoom;
 		f->ymax /= f->zoom;
-		f->z *= 1.1;
 	}
 	if (keycode == 27)
 	{
@@ -87,9 +85,7 @@ static int		ft_z_in_and_out(int keycode, t_fractol *f)
 		f->xmax *= f->zoom;
 		f->ymin *= f->zoom;
 		f->ymax *= f->zoom;
-		f->z /= 1.1;
 	}
-	printf("zoom is : %f\n", f->z);
 	return (0);
 }
 
