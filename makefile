@@ -6,7 +6,7 @@
 #    By: vrenaudi <urenaudi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 14:25:25 by vrenaudi          #+#    #+#              #
-#    Updated: 2018/12/10 14:52:05 by vrenaudi         ###   ########.fr        #
+#    Updated: 2018/12/12 15:52:04 by vrenaudi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,9 @@ SRCS = main.c \
 	   ft_loop.c \
 	   ft_key.c \
 	   ft_commands.c \
-	   ft_mouse.c
+	   ft_commands2.c \
+	   ft_mouse.c \
+	   ft_mouse_mvt.c
 
 OBJ = $(SRCS:.c=.o)
 

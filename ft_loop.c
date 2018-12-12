@@ -6,19 +6,17 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/15 16:27:22 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/11 16:05:36 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/12 15:42:37 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static int		ft_movements(t_fractol *f)
+static void		ft_horizontal_movements(t_fractol *f)
 {
 	double	move_x;
-	double	move_y;
 
 	move_x = (f->xmax - f->xmin) / (WIDTH / f->ms);
-	move_y = (f->ymax - f->ymin) / (HEIGHT / f->ms);
 	if (f->move_l == 1)
 	{
 		f->xmin -= move_x;
@@ -29,6 +27,13 @@ static int		ft_movements(t_fractol *f)
 		f->xmin += move_x;
 		f->xmax += move_x;
 	}
+}
+
+static void		ft_vertical_movements(t_fractol *f)
+{
+	double	move_y;
+
+	move_y = (f->ymax - f->ymin) / (HEIGHT / f->ms);
 	if (f->move_d == 1)
 	{
 		f->ymin -= move_y;
@@ -39,7 +44,6 @@ static int		ft_movements(t_fractol *f)
 		f->ymin += move_y;
 		f->ymax += move_y;
 	}
-	return (0);
 }
 
 int				ft_loop(t_fractol *f)
@@ -49,7 +53,8 @@ int				ft_loop(t_fractol *f)
 		f->pos = 0;
 		mlx_clear_window(f->mlxptr, f->mlxwin);
 		ft_bzero(f->strima, (WIDTH * 4 * HEIGHT));
-		ft_movements(f);
+		ft_horizontal_movements(f);
+		ft_vertical_movements(f);
 		if (f->param == 0)
 			ft_mandelbrot(f);
 		else if (f->param == 1)
