@@ -6,7 +6,7 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 13:23:18 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/12 16:14:57 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/12 20:15:35 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include <mlx.h>
 # include <math.h>
 
-# define WIDTH 900
-# define HEIGHT 900
+# define WIDTH 1000
+# define HEIGHT 1000
 
 typedef struct		s_fractol
 {
@@ -55,6 +55,15 @@ typedef struct		s_tab
 	int				x;
 	int				y;
 }					t_tab;
+
+typedef struct		s_julia
+{
+	double			tmp;
+	double			refactor;
+	double			imfactor;
+	double			xmin;
+	double			ymin;
+}					t_julia;
 
 int					ft_commands(int keycode, t_fractol *f);
 int					ft_commands2(int keycode, t_fractol *f);

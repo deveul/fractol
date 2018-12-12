@@ -6,7 +6,7 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 13:20:10 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/12 16:31:07 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/12 20:24:05 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ static void	ft_init_fractol(t_fractol *f)
 	f->mlxima = NULL;
 	f->strima = NULL;
 	f->xmin = -2;
-	f->xmax = 1;
-	f->ymin = -1.2;
-	f->ymax = f->ymin + (f->xmax - f->xmin) * HEIGHT / WIDTH;
+	f->xmax = 2;
+	f->ymin = -2;
+	f->ymax = 2;
 	f->move_l = 0;
 	f->move_r = 0;
 	f->move_d = 0;
@@ -35,6 +35,8 @@ static void	ft_init_fractol(t_fractol *f)
 	f->ms = 50;
 	f->zoom = 1.1;
 	f->trigger = 1;
+	f->ci = 0;
+	f->cr = 0;
 }
 
 static int	ft_check_arg(int argc, char **argv, t_fractol *f)
@@ -52,12 +54,14 @@ static int	ft_check_arg(int argc, char **argv, t_fractol *f)
 	if (ft_strequ(argv[1], "Mandelbrot"))
 		f->param = 0;
 	else if (ft_strequ(argv[1], "Julia"))
-	{
-		f->ci = 0.6;
-		f->cr = 0.4;
 		f->param = 1;
-	}
 	return (1);
+}
+
+static int	ft_redcross(t_fractol *f)
+{
+	(void)f;
+	exit(0);
 }
 
 int			main(int argc, char **argv)
@@ -67,8 +71,9 @@ int			main(int argc, char **argv)
 	int			s_l;
 	int			endian;
 
-	ft_check_arg(argc, argv, &f);
 	ft_init_fractol(&f);
+	if (ft_check_arg(argc, argv, &f) == -1)
+		return (-1);
 	f.mlxptr = mlx_init();
 	f.mlxwin = mlx_new_window(f.mlxptr, WIDTH, HEIGHT, argv[1]);
 	f.mlxima = mlx_new_image(f.mlxptr, WIDTH, HEIGHT);
@@ -78,6 +83,7 @@ int			main(int argc, char **argv)
 	else if (ft_strequ(argv[1], "Julia"))
 		ft_julia(&f);
 	mlx_put_image_to_window(f.mlxptr, f.mlxwin, f.mlxima, 0, 0);
+	mlx_hook(f.mlxwin, 17, 0, ft_redcross, &f);
 	mlx_hook(f.mlxwin, 2, 0, ft_key_down, &f);
 	mlx_hook(f.mlxwin, 3, 0, ft_key_up, &f);
 	mlx_hook(f.mlxwin, 4, 0, ft_mouse, &f);
@@ -86,3 +92,9 @@ int			main(int argc, char **argv)
 	mlx_loop(f.mlxptr);
 	return (0);
 }
+//regler valeur de zoom
+//afficher les differentes valeurs
+//troisieme fractale
+//panel de couleurs predef
+//ite +1000
+//pthread
