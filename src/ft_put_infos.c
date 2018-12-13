@@ -6,11 +6,11 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 14:15:17 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/13 14:23:12 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/13 17:26:58 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include <fractol.h>
 
 static void	ft_put_infos_color(t_fractol *f)
 {

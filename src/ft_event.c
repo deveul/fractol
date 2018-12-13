@@ -6,11 +6,11 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 14:49:01 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/13 16:12:13 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/13 17:26:08 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include <fractol.h>
 
 int		ft_redcross(t_fractol *f)
 {

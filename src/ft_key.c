@@ -6,11 +6,11 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 15:55:35 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/13 15:35:39 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/13 17:27:17 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include <fractol.h>
 
 int		ft_key_up(int keycode, t_fractol *f)
 {

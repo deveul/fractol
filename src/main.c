@@ -6,11 +6,11 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 13:20:10 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/13 15:38:15 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/13 17:27:13 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include <fractol.h>
 
 static void	ft_init_hook_values(t_fractol *f)
 {

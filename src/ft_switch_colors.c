@@ -6,11 +6,11 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 15:06:30 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/13 15:19:48 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/13 17:27:03 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include <fractol.h>
 
 void		ft_switch_colors3(int keycode, t_fractol *f)
 {

@@ -6,11 +6,11 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 15:49:11 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/13 16:12:02 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/13 17:49:41 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include <fractol.h>
 
 static int		ft_change_max_iter(int keycode, t_fractol *f)
 {
@@ -37,7 +37,7 @@ static int		ft_z_in_and_out(int keycode, t_fractol *f)
 		f->xmax /= f->zoom;
 		f->ymin /= f->zoom;
 		f->ymax /= f->zoom;
-		f->currentzoom /= f->zoom;
+		f->currentzoom *= f->zoom;
 	}
 	if (keycode == 27)
 	{
@@ -45,7 +45,7 @@ static int		ft_z_in_and_out(int keycode, t_fractol *f)
 		f->xmax *= f->zoom;
 		f->ymin *= f->zoom;
 		f->ymax *= f->zoom;
-		f->currentzoom *= f->zoom;
+		f->currentzoom /= f->zoom;
 	}
 	return (0);
 }

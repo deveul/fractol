@@ -6,11 +6,11 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/15 16:27:22 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/13 14:41:14 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/13 17:26:47 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include <fractol.h>
 
 static void		ft_horizontal_movements(t_fractol *f)
 {

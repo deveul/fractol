@@ -6,7 +6,7 @@
 #    By: vrenaudi <urenaudi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 14:25:25 by vrenaudi          #+#    #+#              #
-#    Updated: 2018/11/17 11:31:16 by vrenaudi         ###   ########.fr        #
+#    Updated: 2018/12/13 17:45:49 by vrenaudi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror -g3
 
-NAME = libftprintf.a
+NAME = libft.a
 
 SRCS = ./printf/ft_printf.c ./printf/ft_get_fmt.c ./printf/ft_conv_c.c \
 	   ./printf/ft_conv_d.c ./printf/ft_conv_h.c ./printf/ft_conv_o.c \

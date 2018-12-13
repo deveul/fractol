@@ -6,11 +6,11 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 15:55:35 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/13 16:11:52 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/13 17:27:15 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include <fractol.h>
 
 static int		ft_quit(t_fractol *f)
 {

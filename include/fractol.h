@@ -6,14 +6,14 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 13:23:18 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/13 15:28:19 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/13 17:48:43 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "./libft/printf/ft_printf.h"
+# include "../libft/printf/ft_printf.h"
 # include <mlx.h>
 # include <math.h>
 

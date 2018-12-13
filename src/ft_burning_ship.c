@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mandelbrot.c                                    :+:      :+:    :+:   */
+/*   ft_burning_ship.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 15:55:39 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/13 10:06:52 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/13 17:25:23 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include <fractol.h>
 
 static void	ft_draw_pixel(t_fractol *f, int i)
 {
@@ -36,7 +36,7 @@ static void	ft_init_factors(t_fractol *f, double *refactor, double *imfactor)
 	*imfactor = (f->ymax - f->ymin) / HEIGHT;
 }
 
-void		ft_mandelbrot(t_fractol *f)
+void		ft_burning_ship(t_fractol *f)
 {
 	t_tab	t;
 	int		i;
@@ -57,8 +57,8 @@ void		ft_mandelbrot(t_fractol *f)
 			while (((f->zr * f->zr) + (f->zi * f->zi)) < 4 && i++ < f->max_iter)
 			{
 				tmp = f->zr;
-				f->zr = f->zr * f->zr - f->zi * f->zi + f->cr;
-				f->zi = 2 * tmp * f->zi + f->ci;
+				f->zr = fabs(f->zr * f->zr - f->zi * f->zi + f->cr);
+				f->zi = fabs(2 * tmp * f->zi + f->ci);
 			}
 			ft_draw_pixel(f, i);
 		}
