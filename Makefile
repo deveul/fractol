@@ -6,7 +6,7 @@
 #    By: vrenaudi <urenaudi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 14:25:25 by vrenaudi          #+#    #+#              #
-#    Updated: 2018/12/13 17:48:45 by vrenaudi         ###   ########.fr        #
+#    Updated: 2018/12/13 17:54:29 by vrenaudi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,7 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 clean:
 	Make clean -C ./libft
 	$(RM) $(OBJ)
-	@rmdir $(obJ_PATH) 2> /dev/null || true
+	@rmdir $(OBJ_PATH) 2> /dev/null || true
 
 fclean: clean
 	make fclean -C ./libft
