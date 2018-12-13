@@ -6,7 +6,7 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 15:49:11 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/13 15:21:12 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/13 16:12:02 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ static int		ft_change_max_iter(int keycode, t_fractol *f)
 		f->max_iter -= 50;
 	else if (keycode == 79)
 		f->max_iter -= 1000;
-	ft_printf("iter is : %d\n", f->max_iter);
 	return (0);
 }
 

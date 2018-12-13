@@ -6,7 +6,7 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 15:55:35 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/13 15:30:12 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/13 16:11:52 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ static void		ft_switch(int keycode, t_fractol *f)
 
 int				ft_commands(int keycode, t_fractol *f)
 {
-	ft_printf("%d\n", keycode);
 	if (keycode == 53 || keycode == 29 || keycode == 24 || keycode == 27
 			|| keycode == 13 || keycode == 14 || keycode == 49
 			|| ((keycode == 69 || keycode == 67 || keycode == 80)
