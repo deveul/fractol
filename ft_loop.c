@@ -6,7 +6,7 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/15 16:27:22 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/12 20:07:04 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/13 10:29:07 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,10 @@ int				ft_loop(t_fractol *f)
 			ft_mandelbrot(f);
 		else if (f->param == 1)
 			ft_julia(f);
+		else if (f->param == 2)
+			ft_burning_ship(f);
+		else if (f->param == 3)
+			ft_bs_julia(f);
 		mlx_put_image_to_window(f->mlxptr, f->mlxwin, f->mlxima, 0, 0);
 		f->change = 0;
 	}

@@ -6,7 +6,7 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 13:20:10 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/12 20:24:05 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/13 11:22:58 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ static void	ft_init_fractol(t_fractol *f)
 	f->ms = 50;
 	f->zoom = 1.1;
 	f->trigger = 1;
-	f->ci = 0;
 	f->cr = 0;
+	f->ci = 0;
 }
 
 static int	ft_check_arg(int argc, char **argv, t_fractol *f)
@@ -46,15 +46,22 @@ static int	ft_check_arg(int argc, char **argv, t_fractol *f)
 		ft_printf("invalid number of arguments\n");
 		return (-1);
 	}
-	if (!ft_strequ(argv[1], "Mandelbrot") && !ft_strequ(argv[1], "Julia"))
+	if (!ft_strequ(argv[1], "Mandelbrot") && !ft_strequ(argv[1], "Julia")
+			&& !ft_strequ(argv[1], "BurningShip")
+		&& !ft_strequ(argv[1], "BsJulia"))
 	{
 		ft_printf("valid parameters are :\nMandelbrot\nJulia\n");
+		ft_printf("BurningShip\nBsJulia\n");
 		return (-1);
 	}
 	if (ft_strequ(argv[1], "Mandelbrot"))
 		f->param = 0;
 	else if (ft_strequ(argv[1], "Julia"))
 		f->param = 1;
+	else if (ft_strequ(argv[1], "BurningShip"))
+		f->param = 2;
+	else if (ft_strequ(argv[1], "BsJulia"))
+		f->param = 3;
 	return (1);
 }
 
@@ -62,6 +69,18 @@ static int	ft_redcross(t_fractol *f)
 {
 	(void)f;
 	exit(0);
+}
+
+static void	ft_choose_fractal(t_fractol *f)
+{
+	if (f->param == 0)
+		ft_mandelbrot(f);
+	else if (f->param == 1)
+		ft_julia(f);
+	else if (f->param == 2)
+		ft_burning_ship(f);
+	else if (f->param == 3)
+		ft_bs_julia(f);
 }
 
 int			main(int argc, char **argv)
@@ -78,10 +97,7 @@ int			main(int argc, char **argv)
 	f.mlxwin = mlx_new_window(f.mlxptr, WIDTH, HEIGHT, argv[1]);
 	f.mlxima = mlx_new_image(f.mlxptr, WIDTH, HEIGHT);
 	f.strima = mlx_get_data_addr(f.mlxima, &(bpp), &(s_l), &(endian));
-	if (ft_strequ(argv[1], "Mandelbrot"))
-		ft_mandelbrot(&f);
-	else if (ft_strequ(argv[1], "Julia"))
-		ft_julia(&f);
+	ft_choose_fractal(&f);
 	mlx_put_image_to_window(f.mlxptr, f.mlxwin, f.mlxima, 0, 0);
 	mlx_hook(f.mlxwin, 17, 0, ft_redcross, &f);
 	mlx_hook(f.mlxwin, 2, 0, ft_key_down, &f);
@@ -94,7 +110,5 @@ int			main(int argc, char **argv)
 }
 //regler valeur de zoom
 //afficher les differentes valeurs
-//troisieme fractale
 //panel de couleurs predef
-//ite +1000
 //pthread

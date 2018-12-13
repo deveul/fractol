@@ -6,7 +6,7 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 15:55:35 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/12 20:17:58 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/13 11:22:53 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,13 @@ int				ft_commands(int keycode, t_fractol *f)
 {
 	ft_printf("%d\n", keycode);
 	if (keycode == 53 || keycode == 5 || keycode == 11 || keycode == 15
-			|| keycode == 17 || keycode == 3 || keycode == 9
-			|| keycode == 29 || keycode == 24 || keycode == 27
-			|| keycode == 13 || keycode == 14 || keycode == 49
-			|| ((keycode == 69 || keycode == 67) && f->max_iter < 10000)
-			|| keycode == 257 || (keycode == 78 && f->max_iter > 15)
-			|| (keycode == 75 && f->max_iter > 65))
+		|| keycode == 17 || keycode == 3 || keycode == 9
+		|| keycode == 29 || keycode == 24 || keycode == 27
+		|| keycode == 13 || keycode == 14 || keycode == 49
+		|| ((keycode == 69 || keycode == 67 || keycode == 80)
+			&& f->max_iter < 10000) || (keycode == 75 && f->max_iter > 65)
+		|| (keycode == 78 && f->max_iter > 15)
+		|| (keycode == 79 && f->max_iter > 1015) || keycode == 257)
 		f->change = 1;
 	else
 		return (-1);

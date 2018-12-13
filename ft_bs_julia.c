@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_julia.c                                         :+:      :+:    :+:   */
+/*   ft_bs_julia.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 15:55:39 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/13 10:06:57 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/13 10:49:07 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	ft_init_factors(t_fractol *f, t_julia *j)
 	j->imfactor = (f->ymax - f->ymin) / (HEIGHT - 1);
 }
 
-void		ft_julia(t_fractol *f)
+void		ft_bs_julia(t_fractol *f)
 {
 	t_tab	t;
 	t_julia	j;
@@ -44,14 +44,14 @@ void		ft_julia(t_fractol *f)
 		t.x = -1;
 		while (++t.x < WIDTH)
 		{
-			f->zi = j.ymin + t.y * j.imfactor + f->ci;
-			f->zr = j.xmin + t.x * j.refactor + f->cr;
+			f->zi = fabs(j.ymin + t.y * j.imfactor + f->ci);
+			f->zr = fabs(j.xmin + t.x * j.refactor + f->cr);
 			i = 0;
 			while (((f->zr * f->zr) + (f->zi * f->zi)) < 4 && i++ < f->max_iter)
 			{
 				j.tmp = f->zr;
-				f->zr = f->zr * f->zr - f->zi * f->zi + f->cr;
-				f->zi = 2 * j.tmp * f->zi + f->ci;
+				f->zr = fabs(f->zr * f->zr - f->zi * f->zi + f->cr);
+				f->zi = fabs(2 * j.tmp * f->zi + f->ci);
 			}
 			ft_draw_pixel(f, i);
 		}

@@ -6,7 +6,7 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 13:23:18 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/12 20:15:35 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/13 10:36:55 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ int					ft_key_up(int keycode, t_fractol *f);
 int					ft_loop(t_fractol *f);
 int					ft_mouse(int button, int x, int y, t_fractol *f);
 int					ft_mouse_mvt(int x, int y, t_fractol *f);
+void				ft_bs_julia(t_fractol *f);
+void				ft_burning_ship(t_fractol *f);
 void				ft_julia(t_fractol *f);
 void				ft_mandelbrot(t_fractol *f);
 
