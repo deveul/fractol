@@ -6,11 +6,25 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 13:20:10 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/13 11:22:58 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/13 15:31:33 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+static void	ft_init_hook_values(t_fractol *f)
+{
+	f->move_l = 0;
+	f->move_r = 0;
+	f->move_d = 0;
+	f->move_u = 0;
+	f->r_up = 0;
+	f->r_down = 0;
+	f->g_up = 0;
+	f->g_down = 0;
+	f->b_up = 0;
+	f->b_down = 0;
+}
 
 static void	ft_init_fractol(t_fractol *f)
 {
@@ -22,21 +36,20 @@ static void	ft_init_fractol(t_fractol *f)
 	f->xmax = 2;
 	f->ymin = -2;
 	f->ymax = 2;
-	f->move_l = 0;
-	f->move_r = 0;
-	f->move_d = 0;
-	f->move_u = 0;
 	f->max_iter = 100;
 	f->change = 0;
 	f->pos = 0;
-	f->r = 10;
-	f->b = 1;
-	f->g = 5;
+	f->r = 50;
+	f->b = 5;
+	f->g = 25;
 	f->ms = 50;
 	f->zoom = 1.1;
 	f->trigger = 1;
 	f->cr = 0;
 	f->ci = 0;
+	f->currentzoom = 1;
+	f->invzoom = 1.0 / f->zoom;
+	ft_init_hook_values(f);
 }
 
 static int	ft_check_arg(int argc, char **argv, t_fractol *f)
@@ -65,12 +78,6 @@ static int	ft_check_arg(int argc, char **argv, t_fractol *f)
 	return (1);
 }
 
-static int	ft_redcross(t_fractol *f)
-{
-	(void)f;
-	exit(0);
-}
-
 static void	ft_choose_fractal(t_fractol *f)
 {
 	if (f->param == 0)
@@ -81,22 +88,24 @@ static void	ft_choose_fractal(t_fractol *f)
 		ft_burning_ship(f);
 	else if (f->param == 3)
 		ft_bs_julia(f);
+	ft_put_infos(f);
 }
 
 int			main(int argc, char **argv)
 {
 	t_fractol	f;
-	int			bpp;
-	int			s_l;
-	int			endian;
+	int			bip;
 
 	ft_init_fractol(&f);
 	if (ft_check_arg(argc, argv, &f) == -1)
 		return (-1);
 	f.mlxptr = mlx_init();
-	f.mlxwin = mlx_new_window(f.mlxptr, WIDTH, HEIGHT, argv[1]);
-	f.mlxima = mlx_new_image(f.mlxptr, WIDTH, HEIGHT);
-	f.strima = mlx_get_data_addr(f.mlxima, &(bpp), &(s_l), &(endian));
+	if (!(f.mlxwin = mlx_new_window(f.mlxptr, WIDTH, (HEIGHT * 1.1), argv[1])))
+		exit(-1);
+	if ((f.mlxima = mlx_new_image(f.mlxptr, WIDTH, HEIGHT)) == NULL)
+		exit(-1);
+	if (!(f.strima = mlx_get_data_addr(f.mlxima, &(bip), &(bip), &(bip))))
+		exit(-1);
 	ft_choose_fractal(&f);
 	mlx_put_image_to_window(f.mlxptr, f.mlxwin, f.mlxima, 0, 0);
 	mlx_hook(f.mlxwin, 17, 0, ft_redcross, &f);
@@ -108,7 +117,3 @@ int			main(int argc, char **argv)
 	mlx_loop(f.mlxptr);
 	return (0);
 }
-//regler valeur de zoom
-//afficher les differentes valeurs
-//panel de couleurs predef
-//pthread

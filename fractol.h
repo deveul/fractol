@@ -6,7 +6,7 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 13:23:18 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/13 10:36:55 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/13 15:28:19 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,27 @@ typedef struct		s_fractol
 	double			ymin;
 	double			zi;
 	double			zoom;
+	double			invzoom;
+	double			currentzoom;
 	double			zr;
+	int				r;
+	int				g;
 	int				b;
 	int				change;
-	int				g;
 	int				max_iter;
 	int				move_d;
 	int				move_l;
 	int				move_r;
 	int				move_u;
+	int				r_up;
+	int				r_down;
+	int				g_up;
+	int				g_down;
+	int				b_up;
+	int				b_down;
 	int				ms;
 	int				param;
 	int				pos;
-	int				r;
 	int				trigger;
 	void			*mlxima;
 	void			*mlxptr;
@@ -72,9 +80,12 @@ int					ft_key_up(int keycode, t_fractol *f);
 int					ft_loop(t_fractol *f);
 int					ft_mouse(int button, int x, int y, t_fractol *f);
 int					ft_mouse_mvt(int x, int y, t_fractol *f);
+int					ft_redcross(t_fractol *f);
 void				ft_bs_julia(t_fractol *f);
 void				ft_burning_ship(t_fractol *f);
 void				ft_julia(t_fractol *f);
 void				ft_mandelbrot(t_fractol *f);
+void				ft_put_infos(t_fractol *f);
+void				ft_switch_colors(int keycode, t_fractol *f);
 
 #endif

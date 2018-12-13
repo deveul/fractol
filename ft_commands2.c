@@ -6,28 +6,11 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 15:49:11 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/13 11:22:55 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2018/12/13 15:21:12 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-static int		ft_switch_color(int keycode, t_fractol *f)
-{
-	if (keycode == 17 && f->r < 251)
-		f->r += 5;
-	else if (keycode == 15 && f->r > 4)
-		f->r -= 5;
-	else if (keycode == 5 && f->g < 251)
-		f->g += 5;
-	else if (keycode == 3 && f->g > 4)
-		f->g -= 5;
-	else if (keycode == 11 && f->g < 251)
-		f->b += 5;
-	else if (keycode == 9 && f->b > 4)
-		f->b -= 5;
-	return (0);
-}
 
 static int		ft_change_max_iter(int keycode, t_fractol *f)
 {
@@ -55,6 +38,7 @@ static int		ft_z_in_and_out(int keycode, t_fractol *f)
 		f->xmax /= f->zoom;
 		f->ymin /= f->zoom;
 		f->ymax /= f->zoom;
+		f->currentzoom /= f->zoom;
 	}
 	if (keycode == 27)
 	{
@@ -62,6 +46,7 @@ static int		ft_z_in_and_out(int keycode, t_fractol *f)
 		f->xmax *= f->zoom;
 		f->ymin *= f->zoom;
 		f->ymax *= f->zoom;
+		f->currentzoom *= f->zoom;
 	}
 	return (0);
 }
@@ -77,10 +62,7 @@ static int		ft_change_move_speed(int keycode, t_fractol *f)
 
 int				ft_commands2(int keycode, t_fractol *f)
 {
-	if (keycode == 5 || keycode == 11 || keycode == 15
-			|| keycode == 17 || keycode == 3 || keycode == 9)
-		ft_switch_color(keycode, f);
-	else if (((keycode == 69 || keycode == 67 || keycode == 80)
+	if (((keycode == 69 || keycode == 67 || keycode == 80)
 				&& f->max_iter < 10000)
 			|| (keycode == 75 && f->max_iter > 65)
 			|| (keycode == 78 && f->max_iter > 15)
@@ -90,5 +72,7 @@ int				ft_commands2(int keycode, t_fractol *f)
 		ft_z_in_and_out(keycode, f);
 	else if (keycode == 13 || keycode == 14)
 		ft_change_move_speed(keycode, f);
+	else
+		ft_switch_colors(keycode, f);
 	return (0);
 }
