@@ -6,7 +6,7 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 13:20:10 by vrenaudi          #+#    #+#             */
-/*   Updated: 2019/01/16 15:34:10 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2019/01/16 15:45:28 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,14 @@ static int	ft_check_arg(int argc, char **argv, t_fractol *f)
 {
 	if (argc != 2)
 	{
-		ft_printf("invalid number of arguments\n");
+		ft_printf("Invalid number of arguments\n./fractol [argument name]\n");
 		return (-1);
 	}
 	if (!ft_strequ(argv[1], "Mandelbrot") && !ft_strequ(argv[1], "Julia")
 			&& !ft_strequ(argv[1], "BurningShip")
 		&& !ft_strequ(argv[1], "BsJulia"))
 	{
-		ft_printf("valid parameters are :\nMandelbrot\nJulia\n");
+		ft_printf("Valid parameters are :\nMandelbrot\nJulia\n");
 		ft_printf("BurningShip\nBsJulia\n");
 		return (-1);
 	}
