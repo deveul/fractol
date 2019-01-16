@@ -6,7 +6,7 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 13:20:10 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/13 17:27:13 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2019/01/16 15:34:10 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ int			main(int argc, char **argv)
 	if (ft_check_arg(argc, argv, &f) == -1)
 		return (-1);
 	f.mlxptr = mlx_init();
+	ft_display_commands(&f);
 	if (!(f.mlxwin = mlx_new_window(f.mlxptr, WIDTH, (HEIGHT * 1.1), argv[1])))
 		exit(-1);
 	if ((f.mlxima = mlx_new_image(f.mlxptr, WIDTH, HEIGHT)) == NULL)

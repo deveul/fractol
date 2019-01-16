@@ -6,7 +6,7 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 13:23:18 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/13 17:48:43 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2019/01/16 15:37:18 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct		s_fractol
 	void			*mlxima;
 	void			*mlxptr;
 	void			*mlxwin;
+	void			*mlxwin2;
 }					t_fractol;
 
 typedef struct		s_tab
@@ -86,6 +87,7 @@ void				ft_burning_ship(t_fractol *f);
 void				ft_julia(t_fractol *f);
 void				ft_mandelbrot(t_fractol *f);
 void				ft_put_infos(t_fractol *f);
+void				ft_display_commands(t_fractol *f);
 void				ft_switch_colors(int keycode, t_fractol *f);
 
 #endif

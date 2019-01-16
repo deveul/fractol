@@ -6,7 +6,7 @@
 #    By: vrenaudi <urenaudi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 14:25:25 by vrenaudi          #+#    #+#              #
-#    Updated: 2018/12/13 17:54:29 by vrenaudi         ###   ########.fr        #
+#    Updated: 2019/01/16 15:36:49 by vrenaudi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRC_NAME = main.c \
 		   ft_burning_ship.c \
 		   ft_bs_julia.c \
 		   ft_put_infos.c \
+		   ft_put_commands.c \
 		   ft_switch_colors.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)

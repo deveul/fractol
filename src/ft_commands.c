@@ -6,7 +6,7 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 15:55:35 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/13 17:27:15 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2019/01/16 15:19:05 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static int		ft_quit(t_fractol *f)
 {
 	mlx_clear_window(f->mlxptr, f->mlxwin);
+	mlx_clear_window(f->mlxptr, f->mlxwin2);
 	ft_bzero(f->strima, (WIDTH * 4 * HEIGHT));
 	exit(0);
 	return (0);

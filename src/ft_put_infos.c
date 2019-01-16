@@ -6,11 +6,27 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 14:15:17 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/13 17:26:58 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2019/01/16 14:47:11 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
+
+static void	ft_put_name(t_fractol *f)
+{
+	if (f->param == 0)
+		mlx_string_put(f->mlxptr, f->mlxwin, (WIDTH - WIDTH / 2 - WIDTH / 10), \
+			(HEIGHT + HEIGHT / 15), 16777215, "Fractal of Mandelbrot");
+	if (f->param == 1)
+		mlx_string_put(f->mlxptr, f->mlxwin, (WIDTH - WIDTH / 2 - WIDTH / 10), \
+			(HEIGHT + HEIGHT / 15), 16777215, "Set of Julia");
+	if (f->param == 2)
+		mlx_string_put(f->mlxptr, f->mlxwin, (WIDTH - WIDTH / 2 - WIDTH / 10), \
+			(HEIGHT + HEIGHT / 15), 16777215, "The Burning Ship");
+	if (f->param == 3)
+		mlx_string_put(f->mlxptr, f->mlxwin, (WIDTH - WIDTH / 2 - WIDTH / 10), \
+			(HEIGHT + HEIGHT / 15), 16777215, "Set of the Burning Ship");
+}
 
 static void	ft_put_infos_color(t_fractol *f)
 {
@@ -68,4 +84,5 @@ void		ft_put_infos(t_fractol *f)
 	if (f->param == 1 || f->param == 3)
 		ft_put_infos_complex(f);
 	ft_put_infos_color(f);
+	ft_put_name(f);
 }
