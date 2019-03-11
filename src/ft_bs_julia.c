@@ -6,7 +6,7 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 15:55:39 by vrenaudi          #+#    #+#             */
-/*   Updated: 2018/12/13 17:25:29 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2019/03/11 19:03:26 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,31 @@ static void	ft_init_factors(t_fractol *f, t_julia *j)
 	j->imfactor = (f->ymax - f->ymin) / (HEIGHT - 1);
 }
 
+static void	choose_bs_julia_value(t_fractol *f)
+{
+	double	tmp;
+
+	tmp = f->zr;
+	if (f->mand == 2)
+	{
+		f->zr = fabs(f->zr * f->zr - f->zi * f->zi + f->cr);
+		f->zi = fabs(2 * tmp * f->zi + f->ci);
+	}
+	else if (f->mand == 3)
+	{
+		f->zr = fabs((f->zr * f->zr * f->zr)
+				- (3 * f->zr * f->zi * f->zi) + f->cr);
+		f->zi = fabs((3 * tmp * tmp * f->zi) - (f->zi * f->zi * f->zi) + f->ci);
+	}
+	else if (f->mand == 4)
+	{
+		f->zr = fabs(pow(f->zr, 5) - (10 * pow(f->zr, 3) * pow(f->zi, 2))
+			+ (5 * f->zr * pow(f->zi, 4)) + f->cr);
+		f->zi = fabs((5 * pow(tmp, 4) * f->zi)
+				- (10 * pow(tmp, 2) * pow(f->zi, 3)) + pow(f->zi, 5) + f->ci);
+	}
+}
+
 void		ft_bs_julia(t_fractol *f)
 {
 	t_tab	t;
@@ -48,11 +73,7 @@ void		ft_bs_julia(t_fractol *f)
 			f->zr = fabs(j.xmin + t.x * j.refactor + f->cr);
 			i = 0;
 			while (((f->zr * f->zr) + (f->zi * f->zi)) < 4 && i++ < f->max_iter)
-			{
-				j.tmp = f->zr;
-				f->zr = fabs(f->zr * f->zr - f->zi * f->zi + f->cr);
-				f->zi = fabs(2 * j.tmp * f->zi + f->ci);
-			}
+				choose_bs_julia_value(f);
 			ft_draw_pixel(f, i);
 		}
 	}

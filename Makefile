@@ -6,13 +6,13 @@
 #    By: vrenaudi <urenaudi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 14:25:25 by vrenaudi          #+#    #+#              #
-#    Updated: 2019/01/16 15:36:49 by vrenaudi         ###   ########.fr        #
+#    Updated: 2019/03/11 16:03:44 by vrenaudi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -O3 -flto -march=native
 
 NAME = fractol
 

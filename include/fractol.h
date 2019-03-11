@@ -6,7 +6,7 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 13:23:18 by vrenaudi          #+#    #+#             */
-/*   Updated: 2019/01/16 15:37:18 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2019/03/11 17:23:37 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct		s_fractol
 	double			invzoom;
 	double			currentzoom;
 	double			zr;
+	int				mand;
 	int				r;
 	int				g;
 	int				b;

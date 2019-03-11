@@ -6,13 +6,13 @@
 #    By: vrenaudi <urenaudi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 14:25:25 by vrenaudi          #+#    #+#              #
-#    Updated: 2018/12/13 17:45:49 by vrenaudi         ###   ########.fr        #
+#    Updated: 2019/03/11 16:04:13 by vrenaudi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror -O3 -flto -march=native
 
 NAME = libft.a
 

@@ -6,7 +6,7 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 13:20:10 by vrenaudi          #+#    #+#             */
-/*   Updated: 2019/01/16 15:45:28 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2019/03/11 17:26:47 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static void	ft_init_fractol(t_fractol *f)
 	f->mlxwin = NULL;
 	f->mlxima = NULL;
 	f->strima = NULL;
+	f->mand = 2;
 	f->xmin = -2;
 	f->xmax = 2;
 	f->ymin = -2;

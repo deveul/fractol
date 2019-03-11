@@ -6,7 +6,7 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/11 15:55:35 by vrenaudi          #+#    #+#             */
-/*   Updated: 2019/01/16 15:19:05 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2019/03/11 17:30:42 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,15 @@ static void		ft_switch(int keycode, t_fractol *f)
 
 int				ft_commands(int keycode, t_fractol *f)
 {
+	ft_printf("keycode:%d\n", keycode);
 	if (keycode == 53 || keycode == 29 || keycode == 24 || keycode == 27
 			|| keycode == 13 || keycode == 14 || keycode == 49
 			|| ((keycode == 69 || keycode == 67 || keycode == 80)
 				&& f->max_iter < 10000) || (keycode == 75 && f->max_iter > 65)
 			|| (keycode == 78 && f->max_iter > 15) || keycode == 36
 			|| (keycode == 79 && f->max_iter > 1015)
-			|| (keycode > 81 && keycode < 93 && keycode != 90))
+			|| (keycode > 81 && keycode < 93 && keycode != 90)
+			|| keycode == 0 || keycode == 1)
 		f->change = 1;
 	else
 		return (-1);

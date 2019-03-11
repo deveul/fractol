@@ -6,7 +6,7 @@
 /*   By: vrenaudi <vrenaudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 15:49:11 by vrenaudi          #+#    #+#             */
-/*   Updated: 2019/01/16 15:12:45 by vrenaudi         ###   ########.fr       */
+/*   Updated: 2019/03/11 19:03:29 by vrenaudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,15 @@ static int		ft_change_move_speed(int keycode, t_fractol *f)
 	return (0);
 }
 
+static int		ft_switch_mand(int keycode, t_fractol *f)
+{
+	if (keycode == 0 && f->mand > 2)
+		f->mand--;
+	else if (keycode == 1 && f->mand < 4)
+		f->mand++;
+	return (0);
+}
+
 int				ft_commands2(int keycode, t_fractol *f)
 {
 	if (((keycode == 69 || keycode == 67 || keycode == 80)
@@ -71,6 +80,8 @@ int				ft_commands2(int keycode, t_fractol *f)
 		ft_z_in_and_out(keycode, f);
 	else if (keycode == 13 || keycode == 14)
 		ft_change_move_speed(keycode, f);
+	else if (keycode == 0 || keycode == 1)
+		ft_switch_mand(keycode, f);
 	else
 		ft_switch_colors(keycode, f);
 	return (0);
